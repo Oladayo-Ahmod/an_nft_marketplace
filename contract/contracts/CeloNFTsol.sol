@@ -48,7 +48,7 @@ contract CeloNFT is ERC721URIStorage {
         uint256 currentTokenId = _tokenId.current(); // get current tokenId
         _mint(msg.sender,currentTokenId); // mint token
         _setTokenURI(currentTokenId,_tokenURI); // set token uri from IPFS
-
+         createNFT(currentTokenId,price);
         return currentTokenId;
     }
 
@@ -74,6 +74,7 @@ contract CeloNFT is ERC721URIStorage {
         );
 
     }
+    
 
 
 
