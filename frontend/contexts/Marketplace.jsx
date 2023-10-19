@@ -3,6 +3,7 @@ import { abi, address } from '../constants/index'
 import { ethers } from 'ethers';
 import Swal from "sweetalert2"
 const axios = require('axios')
+import {uploadJSONToIPFS,uploadFileToIPFS} from '../constants/pinata.js'
 const MarketplaceContext = createContext()
 
 // metamask connection
@@ -211,6 +212,24 @@ const allListedNfts=async()=>{
             console.log(error);
         }
 }
+
+
+ /**
+  * NFT image URI handler
+  * @param {any} e
+  * @returns {any}
+  */
+ const imageHandler = async function(e){
+    let file = e.target.files[0]
+    try {
+        const response = await uploadFileToIPFS(file)
+        console.log(response);
+        setNftUrl(response)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 
 
