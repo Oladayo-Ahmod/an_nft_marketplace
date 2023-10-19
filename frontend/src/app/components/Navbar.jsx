@@ -21,7 +21,7 @@ const Navbar =()=>{
     return (
 
             <nav className="navbar navbar-expand-sm navbar-dark bg-white shadow-sm">
-            <Link className='navbar-brand text-secondary' href={'/'}> Marketplace </Link>
+            <Link className='ml-1 navbar-brand text-secondary' href={'/'}> NFT Marketplace </Link>
             <button className="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                 aria-expanded="false" aria-label="Toggle navigation"></button>
             <div className="collapse navbar-collapse" id="collapsibleNavId">
