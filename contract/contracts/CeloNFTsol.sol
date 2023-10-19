@@ -99,6 +99,19 @@ contract CeloNFT is ERC721URIStorage {
         );
     }
 
+      /// @notice All nfts retrieval,
+    /// @return props
+    function allNfts() external view returns (NFT[] memory) {
+        uint currentTokenId = _tokenId.current();
+        NFT[] memory items = new NFT[](currentTokenId);
+        for (uint i = 0; i < items.length; i++) {
+            items[i] = NFT_ID[i + 1];
+        }
+
+        return items;
+    }
+
+
     
 
 
