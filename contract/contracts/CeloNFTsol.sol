@@ -117,6 +117,34 @@ contract CeloNFT is ERC721URIStorage {
         props = NFT_ID[tokenId];
     }
 
+      /// @notice retrieval of all purchased nfts that belong to a user
+    /// @return props
+    function userNfts() external view returns (NFT[] memory) {
+    uint currentTokenId = _tokenId.current();
+    uint itemCount = 0;
+
+    for (uint i = 1; i <= currentTokenId; i++) {
+        if (NFT_ID[i].owner == msg.sender) {
+            itemCount++;
+        }
+    }
+
+    NFT[] memory items = new NFT[](itemCount);
+    itemCount = 0;
+
+    // Populate the array with user's NFTs
+    for (uint i = 1; i <= currentTokenId; i++) {
+        if (NFT_ID[i].owner == msg.sender) {
+            items[itemCount] = NFT_ID[i];
+            itemCount++;
+        }
+    }
+
+    return items;
+}
+
+
+
 
 
     
