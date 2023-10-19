@@ -114,6 +114,39 @@ const MarketplaceProvider = ({ children }) => {
         }
     }
 
+    
+      /**
+       * retrieve all nfts purchased by a user
+       * @returns {any}
+       */
+      const currentUserNfts=async()=>{
+        try {
+            const provider = new ethers.providers.Web3Provider(connection)
+            const signer = provider.getSigner()
+            const contract = new ethers.Contract(address,abi,signer)
+            const NFTS = await contract.userNfts()
+            const data = await Promise.all(NFTS.map(async i =>{
+                const tokenURI = await contract.tokenURI(i.tokenId)
+                let meta = await axios.get(tokenURI);
+                meta = meta.data;
+                let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
+                let item = {
+                    price,
+                    tokenId: i.tokenId.toNumber(),
+                    seller: i.seller,
+                    owner: i.owner,
+                    image: meta.file.pinataURL,
+                    name: meta.name,
+                    }
+                    return item
+            }))
+            setUserNftData(data)
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    
+
 
 
 
