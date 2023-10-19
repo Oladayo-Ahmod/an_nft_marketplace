@@ -146,6 +146,38 @@ const MarketplaceProvider = ({ children }) => {
             }
         }
     
+   
+   /**
+    * retrieve single nft by token id
+    * @param {any} tokenId
+    * @returns {any}
+    */
+   const getSingleNft =async (tokenId)=>{
+    try{
+        const provider = new ethers.providers.Web3Provider(connection)
+        const signer = provider.getSigner()
+        const contract = new ethers.Contract(address,abi,signer)
+        const tokenURI = await contract.tokenURI(tokenId);
+        const NFTS = await contract.singleNFT(tokenId)
+        let meta = await axios.get(tokenURI);
+        meta = meta.data;
+        let item = {
+            price : meta.price,
+            tokenId,
+            seller: NFTS.seller,
+            owner: NFTS.owner,
+            image: meta.file.pinataURL,
+            name: meta.name,
+        }
+
+        setSingleNftData(item)
+
+    }
+
+    catch(error){
+        console.log(error);
+    }
+}
 
 
 
