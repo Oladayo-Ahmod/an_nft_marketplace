@@ -180,6 +180,40 @@ const MarketplaceProvider = ({ children }) => {
 }
 
 
+/**
+ * retrieve all listed nfts
+ * @returns {any}
+ */
+const allListedNfts=async()=>{
+    try {
+        const provider = new ethers.providers.Web3Provider(connection)
+        const signer = provider.getSigner()
+        const contract = new ethers.Contract(address,abi,signer)
+        const NFTS = await contract.allNfts()
+        const data = await Promise.all(NFTS.map(async i =>{
+            const tokenURI = await contract.tokenURI(i.tokenId)
+            let meta = await axios.get(tokenURI);
+            meta = meta.data;
+            let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
+            let item = {
+                price,
+                tokenId: i.tokenId.toNumber(),
+                seller: i.seller,
+                owner: i.owner,
+                image: meta.file.pinataURL,
+                name: meta.name,
+                sold : i.sold
+                }
+                return item
+        }))
+        setNftData(data)
+        } catch (error) {
+            console.log(error);
+        }
+}
+
+
+
 
 
 
