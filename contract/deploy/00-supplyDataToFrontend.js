@@ -8,7 +8,7 @@ module.exports = async function(){
         const ABI = '../frontend/constants/abi.json'  // abi location
         const ADDRESS = '../frontend/constants/address.json' // contract address location
 
-        const contract = await hre.ethers.getContractFactory('Assignment')
+        const contract = await hre.ethers.getContractFactory('CeloNFT')
         const deploy = await contract.deploy()
         console.log('---------------updating-------contract-----------address');
         fs.writeFileSync(ADDRESS,JSON.stringify(deploy.address))
