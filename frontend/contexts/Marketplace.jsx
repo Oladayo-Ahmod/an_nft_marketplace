@@ -230,6 +230,28 @@ const allListedNfts=async()=>{
     }
 }
 
+  
+  /**
+   * upload nft metadata to IPFS
+   * @returns {any}
+   */
+  const uploadMetaData = async function(){
+    const {name,price} = formData
+
+    const nftJSON = {
+        name,
+        price,
+        file:nftUrl
+    }
+
+    try {
+        const response = await uploadJSONToIPFS(nftJSON)
+        return response.pinataURL
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 
 
