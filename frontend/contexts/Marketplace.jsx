@@ -286,8 +286,3 @@ return (
 
 }
 
-
-module.exports = {
-    MarketplaceContext,
-    MarketplaceProvider
-}
