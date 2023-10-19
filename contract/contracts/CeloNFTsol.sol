@@ -74,6 +74,31 @@ contract CeloNFT is ERC721URIStorage {
         );
 
     }
+
+     /// @dev NFT sales functionality and process payment to seller
+    /// @param tokenId,  NFT token id
+    function sellNFT(uint256 tokenId) external payable {
+        uint256 _price = NFT_ID[tokenId].price;
+        address seller = NFT_ID[tokenId].seller;
+        require(msg.value == _price, "incorrect amount");
+        (bool success,) = payable(seller).call{value : _price}(""); // make payment to seller
+        require(success, "payment failed");
+        NFT_ID[tokenId].owner = payable(msg.sender);
+        NFT_ID[tokenId].seller = payable(address(0)); // set seller to empty address
+        NFT_ID[tokenId].sold = true;
+        _soldItems.increment();
+        _transfer(address(this),msg.sender,tokenId); // transfer ownership to sender
+
+        emit NFT_Action(
+            tokenId,
+            msg.sender,
+            address(0),
+            _price,
+            true,
+            "Sold NFT successfully"
+        );
+    }
+
     
 
 
