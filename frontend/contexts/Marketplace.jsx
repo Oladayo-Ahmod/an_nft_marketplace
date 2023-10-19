@@ -12,7 +12,12 @@ if (typeof window !== 'undefined') {
     connection = window.ethereum
 }
 
-// NFT marketplace contract provider provider
+
+/**
+ * NFT marketplace contract provider
+ * @param {any} {children}
+ * @returns {any}
+ */
 const MarketplaceProvider = ({ children }) => {
 
     // state variables
@@ -253,9 +258,36 @@ const allListedNfts=async()=>{
 }
 
 
+return (
+    <MarketplaceContext.Provider
+        value={
+            {
+                connectWallet,
+                currentUserNfts,
+                CreateNft,
+                SellNft,
+                getSingleNft,
+                allListedNfts,
+                account,
+                message,
+                singleNftData,
+                nftData,
+                userNftData,
+                buttonDisability,
+                imageHandler,
+                setFormData,
+                formData
+            }
+        }
+    >
+        {children}
+    </MarketplaceContext.Provider>
+)
+
+}
 
 
-
-
-
+module.exports = {
+    MarketplaceContext,
+    MarketplaceProvider
 }
