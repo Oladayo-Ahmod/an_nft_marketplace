@@ -50,6 +50,22 @@ describe('CeloNFT', ()=>{
         assert.equal(events.args[4],true) // sold equals true
     })
 
+     // retrieve all nfts
+     it("it retrieves all nfts", async ()=>{
+        const price = ethers.utils.parseEther('1')
+        const [, firstSeller,secondSeller,buyer] = await ethers.getSigners()
+        const account1 = contract.connect(firstSeller)
+        await account1.createToken("https://url1.com",price) // create first item
+        const account2 = contract.connect(secondSeller)
+        await account2.createToken("https://url2.com",price) // create second item
+        await contract.connect(buyer).sellNFT(1,{value :price}) // buy one of the created item
+        const nfts = await contract.allNfts()
+        console.log(` all nfts ${nfts}`);
+
+
+    })
+
+
 
 
 
