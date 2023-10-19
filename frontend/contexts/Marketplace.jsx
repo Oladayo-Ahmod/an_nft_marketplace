@@ -85,6 +85,36 @@ const MarketplaceProvider = ({ children }) => {
         }
     }
 
+    
+    /**
+     * selling nft functionality
+     * @param {any} tokenId
+     * @returns {any}
+     */
+    const SellNft = async (tokenId)=>{
+        try {
+            const provider = new ethers.providers.Web3Provider(connection)
+            const signer = provider.getSigner()
+            const contract = new ethers.Contract(address,abi,signer)
+            const price = await contract.getNftPrice(tokenId)
+            let parsedPrice = ethers.utils.formatUnits(price.toString(), 'ether')
+            parsedPrice = ethers.utils.parseEther(parsedPrice)
+            const purchase = await contract.sellNFT(tokenId,{value :parsedPrice})
+            await purchase.wait()
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                text: `You have successfully purchased this item at ${new ethers.utils.parseUnits(price,'ether')} ETH`,
+                showConfirmButton: false,
+                timer: 4000
+            })
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
 
 
 
