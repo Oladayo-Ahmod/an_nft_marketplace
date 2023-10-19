@@ -1,7 +1,7 @@
 "use client"
 
 import { useContext, useEffect, useRef, useState } from 'react'
-import { MarketplaceContext } from "../../context/MarketplaceContext";
+import { MarketplaceContext } from "../../../contexts/Marketplace";
 
  const Create = ()=>{
     const {disability,setFormData,formData,CreateNft,message,imageHandler} = useContext(MarketplaceContext)
