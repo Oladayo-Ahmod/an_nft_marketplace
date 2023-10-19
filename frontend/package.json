@@ -9,25 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "bootstrap": "^5.3.2",
+    "next": "13.5.5",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "13.5.5"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@pinata/sdk": "^2.1.0",
+    "@sanity/client": "^4.0.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "dotenv": "^16.0.3",
     "eslint": "^8",
     "eslint-config-next": "13.5.5",
-    "@pinata/sdk": "^2.1.0",
-    "@sanity/client": "^4.0.1",
-    "slick-carousel": "^1.8.1",
-    "sweetalert2": "^11.7.2",
     "ethers": "5.7.1",
     "fs": "^0.0.1-security",
-    "dotenv": "^16.0.3",
-    "react-slick": "^0.29.0"
-
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.7.2",
+    "typescript": "^5"
   }
 }

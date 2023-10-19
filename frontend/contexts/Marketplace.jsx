@@ -1,3 +1,5 @@
+"use client"
+
 import React, { createContext, useContext, useState } from 'react';
 import { abi, address } from '../constants/index'
 import { ethers } from 'ethers';
@@ -286,3 +288,8 @@ return (
 
 }
 
+
+module.exports = {
+    MarketplaceContext,
+    MarketplaceProvider
+}
