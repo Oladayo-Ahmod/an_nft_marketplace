@@ -7,6 +7,12 @@ describe('CeloNFT', ()=>{
         provider = await ethers.getContractFactory('CeloNFT')
         contract = await provider.deploy()
     })
+    
+      // correct constructor
+    it("has correct constructor", async ()=>{
+        const name = await contract.name()
+        assert.equal(name,"CeloNFT")
+    })
 
      // tests for successfully deployment
      it("deploys contract successfully", async ()=>{
