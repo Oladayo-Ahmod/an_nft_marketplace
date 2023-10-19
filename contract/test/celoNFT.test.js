@@ -70,7 +70,21 @@ describe('CeloNFT', ()=>{
         await contract.createToken("https://test-url",price)
         const nft = await contract.singleNFT('1');
         console.log(` single nft ${nft}`);
+     })
+
+    // retrieves all of purchased nfts of a single user
+    it("retrieves user nfts", async()=>{
+        const price = ethers.utils.parseEther('1')
+        const [, firstSeller,secondSeller,buyer] = await ethers.getSigners()
+        const account1 = contract.connect(firstSeller)
+        await account1.createToken("https://test1.com",price) // create first item
+        const account2 = contract.connect(secondSeller)
+        await account2.createToken("https://test2.com",price) // create second item
+        await contract.connect(buyer).sellNFT(1,{value :price}) // buy one of the created nfts
+        const nfts = await contract.connect(buyer).userNfts()
+        console.log(` all purchased nfts by buyer ${nfts}`);
     })
+
 
 
 
