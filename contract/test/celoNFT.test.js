@@ -62,8 +62,16 @@ describe('CeloNFT', ()=>{
         const nfts = await contract.allNfts()
         console.log(` all nfts ${nfts}`);
 
-
     })
+
+     // retrieves single nft
+     it("it retrieves single nft",async ()=>{
+        const price = ethers.utils.parseEther('1')
+        await contract.createToken("https://test-url",price)
+        const nft = await contract.singleNFT('1');
+        console.log(` single nft ${nft}`);
+    })
+
 
 
 
