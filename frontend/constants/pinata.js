@@ -1,6 +1,6 @@
 // require('dotenv').config();
-const key ='0077ad9f4008f07b6450';
-const secret = '5ae82e3d2ac1db84a20e7e412a6c6375b7d154fc4a53d50b3522cdae651a0663';
+const key = 'cbed2dfed63f25c2bded'
+const secret = '4b4b725feda7ef87619e032778c0ecd57170d475061a5fdf71eb378d50a55706'
 // export const testSecret = process.env.PINATA_SECRET
 
 const axios = require('axios');
