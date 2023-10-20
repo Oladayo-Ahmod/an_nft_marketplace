@@ -49,6 +49,8 @@ const Mynft =()=>{
                     {
                         userNftData? userNftData.map((nft,i)=>(
                             <div className='col col-md-3'>
+                                <h3>My purchased NFTs </h3>
+                                
                             <small className="text-info fw-bold caption caption-tp ">{nft.name} </small>
                             <div className="col-container rounded">
                                 <Image className='image'  loader={()=>nft.image} src={nft.image} width={200} height={200} alt={nft.name} />

@@ -16,7 +16,7 @@ import { MarketplaceContext } from "../../../contexts/Marketplace";
                                 <div className="col-md-12 m-2">
                                     <div className="input-box">
                                         <label for="name" className="form-label">Item Name</label>
-                                        <input id="name" className='form-control' placeholder="e. g. `Digital Awesome Game`" onChange={e => setFormData({...formData, name : e.target.value  })} />
+                                        <input id="name" className='form-control' placeholder="e. g. `Cute Dog`" onChange={e => setFormData({...formData, name : e.target.value  })} />
                                     </div>
                                 </div>
 

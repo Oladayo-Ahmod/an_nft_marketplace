@@ -8,7 +8,7 @@ const Render =()=>{
 
    useEffect(()=>{
     allListedNfts()
-    console.log(nftData)
+    // console.log(nftData)
    },[allListedNfts])
     return (
         <>
