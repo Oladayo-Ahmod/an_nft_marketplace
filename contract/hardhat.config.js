@@ -8,12 +8,13 @@ require("hardhat-gas-reporter")
 require('hardhat-deploy')
 require('dotenv').config()
 
-const MAINNET_RPC_URL =
+const CELO_RPC_URL =
     process.env.MAINNET_RPC_URL ||
     process.env.ALCHEMY_MAINNET_RPC_URL ||
     "https://eth-mainnet.alchemyapi.io/v2/your-api-key"
-const SEPOLIA_RPC_URL =
-    process.env.SEPOLIA_RPC_URL || "https://eth-sepolia.g.alchemy.com/v2/your-api-key"
+
+    const ALFAJORES_RPC_URL =
+    process.env.ALFAJORES_RPC_URL || "https://eth-sepolia.g.alchemy.com/v2/your-api-key"
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x"
 
 // Your API key for Etherscan, obtain one at https://etherscan.io/
@@ -29,19 +30,23 @@ module.exports = {
         localhost: {
             chainId: 31337,
         },
-        sepolia: {
-            url: SEPOLIA_RPC_URL,
-            accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
-            saveDeployments: true,
-            chainId: 11155111,
-            gasPrice : 35000
+        alfajores: {
+            url: "https://alfajores-forno.celo-testnet.org",
+            accounts: {
+              mnemonic: process.env.MNEMONIC,
+              path: "m/44'/52752'/0'/0"
+            },
+            chainId: 44787
+          },
+          
+        celo: {
+        url: "https://forno.celo.org",
+        accounts: {
+            mnemonic: process.env.MNEMONIC,
+            path: "m/44'/52752'/0'/0"
         },
-        mainnet: {
-            url: MAINNET_RPC_URL,
-            accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
-            saveDeployments: true,
-            chainId: 1,
-        },
+        chainId: 42220
+        }
     },
     etherscan: {
         // npx hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
