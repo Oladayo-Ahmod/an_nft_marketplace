@@ -8,13 +8,8 @@ require("hardhat-gas-reporter")
 require('hardhat-deploy')
 require('dotenv').config()
 
-const CELO_RPC_URL =
-    process.env.MAINNET_RPC_URL ||
-    process.env.ALCHEMY_MAINNET_RPC_URL ||
-    "https://eth-mainnet.alchemyapi.io/v2/your-api-key"
-
-    const ALFAJORES_RPC_URL =
-    process.env.ALFAJORES_RPC_URL || "https://eth-sepolia.g.alchemy.com/v2/your-api-key"
+const CELO_RPC_URL = process.env.CELO
+const ALFAJORES_RPC_URL = process.env.ALFAJORES_RPC_URL
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x"
 
 // Your API key for Etherscan, obtain one at https://etherscan.io/
@@ -38,7 +33,7 @@ module.exports = {
             },
             chainId: 44787
           },
-          
+
         celo: {
         url: "https://forno.celo.org",
         accounts: {
