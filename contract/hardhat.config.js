@@ -10,7 +10,7 @@ require('dotenv').config()
 
 const CELO_RPC_URL = process.env.CELO
 const ALFAJORES_RPC_URL = process.env.ALFAJORES_RPC_URL
-const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x"
+const MNEMONIC = process.env.MNEMONIC || "0x"
 
 // Your API key for Etherscan, obtain one at https://etherscan.io/
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "Your etherscan API key"
@@ -26,18 +26,18 @@ module.exports = {
             chainId: 31337,
         },
         alfajores: {
-            url: "https://alfajores-forno.celo-testnet.org",
+            url: ALFAJORES_RPC_URL,
             accounts: {
-              mnemonic: process.env.MNEMONIC,
+              mnemonic: MNEMONIC,
               path: "m/44'/52752'/0'/0"
             },
             chainId: 44787
           },
 
         celo: {
-        url: "https://forno.celo.org",
+        url: CELO_RPC_URL,
         accounts: {
-            mnemonic: process.env.MNEMONIC,
+            mnemonic: MNEMONIC,
             path: "m/44'/52752'/0'/0"
         },
         chainId: 42220
