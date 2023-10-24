@@ -27,12 +27,12 @@ module.exports = {
         },
         alfajores: {
             url: ALFAJORES_RPC_URL,
-            accounts: PRIVATE_KEY,
+            accounts: [PRIVATE_KEY],
             chainId: 44787
           },
         celo: {
         url: CELO_RPC_URL,
-        accounts: PRIVATE_KEY,
+        accounts: [PRIVATE_KEY],
         chainId: 42220
         }
     },
