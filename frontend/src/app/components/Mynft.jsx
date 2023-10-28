@@ -9,7 +9,7 @@ const Mynft =()=>{
    useEffect(()=>{
     currentUserNfts()
     // console.log(userNftData)
-   },[])
+   })
     return (
         <>
          <style jsx>
@@ -48,7 +48,7 @@ const Mynft =()=>{
                 <div className='row justify-content-center align-items-center '>
                     {
                         userNftData? userNftData.map((nft,i)=>(
-                            <div className='col col-md-3'>
+                            <div className='col col-md-3' key={nft.id}>
                                 <h3>My purchased NFTs </h3>
                                 
                             <small className="text-info fw-bold caption caption-tp ">{nft.name} </small>

@@ -49,7 +49,7 @@ const Render =()=>{
                 <div className='row justify-content-center align-items-center '>
                     {
                         nftData? nftData.map((nft,i)=>(
-                            <div className='col col-md-3'>
+                            <div className='col col-md-3' key={nft.id}>
                             <small className="text-info fw-bold caption caption-tp ">{nft.name} </small>
                             <div className=" col-container rounded">
                                 <Image className='image'  loader={()=>nft.image} src={nft.image} width={200} height={200} alt={nft.name} />
