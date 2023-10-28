@@ -2,7 +2,7 @@
 # CELONFT
 
 ## Overview
-The CeloNFT is an Ethereum-based marketplace for minting, buying, and selling Non-Fungible Tokens (NFTs). It allows users to mint new NFTs with associated metadata, list them for sale, purchase NFTs, and retrieve information about NFTs.
+The CeloNFT is an NFT marketplace for minting, buying, and selling Non-Fungible Tokens (NFTs). It allows users to mint new NFTs with associated metadata, list them for sale, purchase NFTs, and retrieve information about NFTs.
 
 ## Contract Details
 - **Contract Name:** CeloNFT
