@@ -42,7 +42,7 @@ contract CeloNFT is ERC721URIStorage {
 
     // checks whether NFT exists
     modifier exists(uint tokenId) {
-        require(_exists(tokenId), "NFT with specified tokenId doesn't exist.");
+        require(_ownerOf(tokenId) != address(0), "NFT with specified tokenId doesn't exist.");
         _;
     }
 
