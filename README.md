@@ -68,8 +68,8 @@ The smart contract emits the `NFT_Action` event with the following parameters:
 
 ## Usage Notes
 1. Deploy the smart contract to the Celo or alfajores testnet.
-2. Call the `createToken` function to mint a new NFT and associate it with metadata.
-3. Call the `sellNFT` function to list an NFT for sale, transferring ownership upon successful purchase.
+2. Call the `createToken` function to mint and list for sale a new NFT and associate it with metadata.
+3. Call the `sellNFT` function to buy an NFT for sale, transferring ownership upon successful purchase.
 4. Use the `allNfts` function to retrieve information about all NFTs on the marketplace.
 5. Use the `singleNFT` function to retrieve information about a specific NFT.
 6. Use the `userNfts` function to retrieve information about all NFTs owned by the caller.

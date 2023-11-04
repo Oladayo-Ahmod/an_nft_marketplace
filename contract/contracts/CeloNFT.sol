@@ -36,16 +36,22 @@ contract CeloNFT is ERC721URIStorage {
     );
 
 
-     constructor() ERC721("CeloNFT", "ASG"){
+    constructor() ERC721("CeloNFT", "ASG"){
         owner = payable(msg.sender);
+    }
+
+    // checks whether NFT exists
+    modifier exists(uint tokenId) {
+        require(_ownerOf(tokenId) != address(0), "NFT with specified tokenId doesn't exist.");
+        _;
     }
 
       /// @dev mint token , set tokenURI and return currentTokenId
      /// @param _tokenURI, a tokenURI obtained from IPFS
      /// @return currentTokenId, current token id
     function createToken(string memory _tokenURI, uint256 price) external returns(uint256) {
-        _tokenId.increment(); // increment tokenId
         uint256 currentTokenId = _tokenId.current(); // get current tokenId
+        _tokenId.increment(); // increment tokenId
         _mint(msg.sender,currentTokenId); // mint token
         _setTokenURI(currentTokenId,_tokenURI); // set token uri from IPFS
          createNFT(currentTokenId,price);
@@ -77,16 +83,18 @@ contract CeloNFT is ERC721URIStorage {
 
      /// @dev NFT sales functionality and process payment to seller
     /// @param tokenId,  NFT token id
-    function sellNFT(uint256 tokenId) external payable {
+    function sellNFT(uint256 tokenId) external payable exists(tokenId) {
+        require(!NFT_ID[tokenId].sold, "Already sold.");
         uint256 _price = NFT_ID[tokenId].price;
         address seller = NFT_ID[tokenId].seller;
         require(msg.value == _price, "incorrect amount");
-        (bool success,) = payable(seller).call{value : _price}(""); // make payment to seller
-        require(success, "payment failed");
         NFT_ID[tokenId].owner = payable(msg.sender);
         NFT_ID[tokenId].seller = payable(address(0)); // set seller to empty address
         NFT_ID[tokenId].sold = true;
         _soldItems.increment();
+
+        (bool success,) = payable(seller).call{value : msg.value}(""); // make payment to seller
+        require(success, "payment failed");
         _transfer(address(this),msg.sender,tokenId); // transfer ownership to sender
 
         emit NFT_Action(
@@ -105,7 +113,7 @@ contract CeloNFT is ERC721URIStorage {
         uint currentTokenId = _tokenId.current();
         NFT[] memory items = new NFT[](currentTokenId);
         for (uint i = 0; i < items.length; i++) {
-            items[i] = NFT_ID[i + 1];
+            items[i] = NFT_ID[i];
         }
 
         return items;
@@ -113,7 +121,7 @@ contract CeloNFT is ERC721URIStorage {
 
      /// @notice retrieval of single nft
     /// @return props
-    function singleNFT(uint256 tokenId) external view returns(NFT memory props){
+    function singleNFT(uint256 tokenId) external view exists(tokenId) returns(NFT memory props){
         props = NFT_ID[tokenId];
     }
 
@@ -123,7 +131,7 @@ contract CeloNFT is ERC721URIStorage {
     uint currentTokenId = _tokenId.current();
     uint itemCount = 0;
 
-    for (uint i = 1; i <= currentTokenId; i++) {
+    for (uint i = 0; i < currentTokenId; i++) {
         if (NFT_ID[i].owner == msg.sender) {
             itemCount++;
         }
@@ -133,7 +141,7 @@ contract CeloNFT is ERC721URIStorage {
     itemCount = 0;
 
     // Populate the array with user's NFTs
-    for (uint i = 1; i <= currentTokenId; i++) {
+    for (uint i = 0; i < currentTokenId; i++) {
         if (NFT_ID[i].owner == msg.sender) {
             items[itemCount] = NFT_ID[i];
             itemCount++;
@@ -146,7 +154,7 @@ contract CeloNFT is ERC721URIStorage {
 /// @notice retrieve nft price
 /// @param tokenId ,tokenId
 /// @return uint256
-function getNftPrice(uint256 tokenId) external view returns(uint256){
+function getNftPrice(uint256 tokenId) external view exists(tokenId) returns(uint256){
     return NFT_ID[tokenId].price;
 }
 
