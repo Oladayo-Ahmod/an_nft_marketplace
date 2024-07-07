@@ -1,11 +1,11 @@
 
-# CELONFT
+# NFT Marketpace
 
 ## Overview
-The CeloNFT is an NFT marketplace for minting, buying, and selling Non-Fungible Tokens (NFTs). It allows users to mint new NFTs with associated metadata, list them for sale, purchase NFTs, and retrieve information about NFTs.
+This NFT marketplace is for minting, buying, and selling Non-Fungible Tokens (NFTs). It allows users to mint new NFTs with associated metadata, list them for sale, purchase NFTs, and retrieve information about NFTs.
 
 ## Contract Details
-- **Contract Name:** CeloNFT
+- **Contract Name:** NFT_Marketplace
 - **Contract Version:** 1.0.0
 - **SPDX-License-Identifier:** MIT
 
@@ -67,7 +67,7 @@ The smart contract emits the `NFT_Action` event with the following parameters:
 - `message`: A message indicating the action taken (e.g., "NFT created successfully" or "Sold NFT successfully").
 
 ## Usage Notes
-1. Deploy the smart contract to the Celo or alfajores testnet.
+1. Deploy the smart contract.
 2. Call the `createToken` function to mint and list for sale a new NFT and associate it with metadata.
 3. Call the `sellNFT` function to buy an NFT for sale, transferring ownership upon successful purchase.
 4. Use the `allNfts` function to retrieve information about all NFTs on the marketplace.
@@ -93,19 +93,8 @@ All props and data are being handled using the context API, making it easier to 
 ### My-NFT
 - This page displays the list of all the NFTs that have been purchased by a particular user.
 
-### Required .env.example file
-- Below are the parameters:
-  - `UPDATE_FRONTEND`: Contract ABI and address have been programmatically handled to render in the frontend without the need to hardcode it.
-  - `ALFAJORES_RPC_URL`: The contract is deployed to Celo alfajores testnet. The RPC URL can be supplied there.
-  - `ETHERSCAN_API`: The Etherscan API key can be entered here.
-  - `REPORT_GAS`: If gas reporting is necessary, this can be set to true; otherwise, false.
-  - `PRIVATE_KEY`: The private key of the address has to be entered here.
-  - NOTE: Pinata API key is also required but is hardcoded with my API key solely for this project inside frontend/constants/pinata.js.
-
 ### Commands
 - The commands necessary to run the code:
   - Run `yarn` in the frontend directory to install frontend packages. After that, you can start the app by running `yarn dev`.
-  - Run `yarn` in the contract directory to install frontend packages. After that, you can start the app by running `yarn hardhat compile` for compilation, `yarn hardhat node` to run it locally, and `yarn hardhat deploy --network alfajores` to deploy it to Celo alfajores testnet.
+  - Run `yarn` in the contract directory to install frontend packages. After that, you can start the app by running `yarn hardhat compile` for compilation, `yarn hardhat node` to run it locally
 ```
-
-You can save this content in a `.md` file for documentation purposes.

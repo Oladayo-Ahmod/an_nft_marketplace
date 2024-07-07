@@ -10,6 +10,7 @@ require('dotenv').config()
 
 const CELO_RPC_URL = process.env.CELO
 const ALFAJORES_RPC_URL = process.env.ALFAJORES_RPC_URL
+const KURA_RPC_URL = process.env.KURA_RPC_URL
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x"
 
 // Your API key for Etherscan, obtain one at https://etherscan.io/
@@ -34,7 +35,13 @@ module.exports = {
         url: CELO_RPC_URL,
         accounts: [PRIVATE_KEY],
         chainId: 42220
-        }
+        },
+        kura: {
+            url: KURA_RPC_URL,
+            accounts: [PRIVATE_KEY],
+            chainId : 5555
+        },
+
     },
     etherscan: {
         // npx hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>

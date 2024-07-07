@@ -67,7 +67,7 @@ const MarketplaceProvider = ({ children }) => {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    text: `You have successfully listed this NFT at ${price} CELO`,
+                    text: `You have successfully listed this NFT at ${price} `,
                     showConfirmButton: false,
                     timer: 4000
                 })
@@ -112,7 +112,7 @@ const MarketplaceProvider = ({ children }) => {
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
-                text: `You have successfully purchased this item at ${new ethers.utils.parseUnits(price,'ether')} CELO`,
+                text: `You have successfully purchased this item at ${new ethers.utils.parseUnits(price,'ether')}`,
                 showConfirmButton: false,
                 timer: 4000
             })

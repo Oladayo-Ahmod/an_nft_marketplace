@@ -54,7 +54,7 @@ const Render =()=>{
                             <div className=" col-container rounded">
                                 <Image className='image'  loader={()=>nft.image} src={nft.image} width={200} height={200} alt={nft.name} />
                             </div>
-                            <small className="text-secondary fw-bold caption-bm caption">Price : {nft.price}CELO </small>
+                            <small className="text-secondary fw-bold caption-bm caption">Price : {nft.price}ETH </small>
                             <p className="text-secondary fw-bold caption-bm caption">Seller: {nft.seller ? `${nft.owner.slice(0,6)}...${nft.owner.slice(nft.owner.length -4)}` : ''} </p>
                             {
                                 Number(account) == Number(nft.seller)  || account == Number(nft.owner) ?

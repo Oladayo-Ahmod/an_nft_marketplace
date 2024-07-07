@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
-contract CeloNFT is ERC721URIStorage {
+contract NFT_Marketplace is ERC721URIStorage {
 
      /// @notice implement the Counter libarary for counting tokenId
     using Counters for Counters.Counter;
@@ -36,7 +36,7 @@ contract CeloNFT is ERC721URIStorage {
     );
 
 
-    constructor() ERC721("CeloNFT", "ASG"){
+    constructor() ERC721("NFT_Marketplace", "NMP"){
         owner = payable(msg.sender);
     }
 

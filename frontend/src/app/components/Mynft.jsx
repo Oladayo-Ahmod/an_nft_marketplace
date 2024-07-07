@@ -55,7 +55,7 @@ const Mynft =()=>{
                             <div className="col-container rounded">
                                 <Image className='image'  loader={()=>nft.image} src={nft.image} width={200} height={200} alt={nft.name} />
                             </div>
-                            <small className="text-secondary fw-bold caption-bm caption">Price : {nft.price}CELO </small>
+                            <small className="text-secondary fw-bold caption-bm caption">Price : {nft.price} ETH </small>
                             <button className='btn btn-success col-md-8 ml-3' disabled>
                                 owned by you
                             </button>

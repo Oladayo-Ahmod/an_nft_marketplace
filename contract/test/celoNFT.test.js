@@ -1,10 +1,10 @@
 const { ethers } = require('hardhat')
 const {assert,expect} = require('chai')
 
-describe('CeloNFT', ()=>{
+describe('NFT_Marketplace', ()=>{
     let provider, contract
     beforeEach(async ()=>{
-        provider = await ethers.getContractFactory('CeloNFT')
+        provider = await ethers.getContractFactory('NFT_Marketplace')
         contract = await provider.deploy()
     })
     
@@ -12,7 +12,7 @@ describe('CeloNFT', ()=>{
         // correct constructor
         it("has correct constructor", async ()=>{
             const name = await contract.name()
-            assert.equal(name,"CeloNFT")
+            assert.equal(name,"NFT_Marketplace")
         })
 
         // tests for successfully deployment
